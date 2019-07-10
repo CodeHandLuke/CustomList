@@ -91,5 +91,24 @@ namespace CustomListProjectTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Add_InvalidIndexInput_ReturnException()
+        {
+            //arrange
+            CustomList<int> test = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int actual;
+
+
+            //act
+            test.Add(1);
+            actual = test[4];
+
+
+            //assert
+        }
     }
 }
