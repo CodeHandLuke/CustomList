@@ -9,13 +9,17 @@ namespace CustomListProject
     public class CustomList<T>
     {
         //member variables
+        public T item;
+        public int[] customIntArray;
+        public string[] customStringArray;
+        
 
 
         //constructor
 
 
         //member methods
-        public void Add(int number)
+        public void Add(T item)
         {
 
         }
