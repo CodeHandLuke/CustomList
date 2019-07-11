@@ -7,6 +7,7 @@ namespace CustomListProjectTest
     [TestClass]
     public class CustomListTest
     {
+        //ADD METHOD TESTS
         [TestMethod]
         public void Add_AddToEmptyList_ValueGoesToIndexZero()
         {
@@ -112,11 +113,125 @@ namespace CustomListProjectTest
 
 
             //act
-            test.Add(1);
+            test.Add(value1);
+            test.Add(value2);
             actual = test[4];
 
 
             //assert
         }
+
+
+        //--------------------------------------------
+        //REMOVED METHOD TESTS
+
+        [TestMethod]
+        public void Remove_RemoveFromList_CountDecrementsProperly()
+        {
+            //arrange
+            CustomList<int> test = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int expected = 3;
+            int actual;
+
+
+            //act
+            test.Add(value1);
+            test.Add(value2);
+            test.Add(value3);
+            test.Add(value4);
+            test.Remove(value4);
+            actual = test.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+
+        public void Remove_RemoveValidItem_ReturnTrueItemExists() //also write a false version!!!
+        {
+            //arrange
+            CustomList<int> test = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            bool expected = true;
+            bool actual;
+
+
+            //act
+            test.Add(value1);
+            test.Add(value2);
+            test.Add(value3);
+            test.Add(value4);
+            actual = test.Remove(value2);
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void Remove_RemoveItem_ListShiftsLeft() //also make sure count goes down 1
+        {
+            //arrange
+            CustomList<int> test = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int expected = 3;
+            int actual;
+
+
+            //act
+            test.Add(value1);
+            test.Add(value2);
+            test.Add(value3);
+            test.Add(value4);
+            test.Remove(value2);
+            actual = test[1];
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [TestMethod]
+
+        public void Remove_RemoveItem_ReturnFalseItemNonexistent() //make sure the
+        {
+            //arrange
+            CustomList<int> test = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            bool expected = false;
+            bool actual;
+
+
+            //act
+            test.Add(value1);
+            test.Add(value2);
+            test.Add(value3);
+            test.Add(value4);
+            actual = test.Remove(value5);
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

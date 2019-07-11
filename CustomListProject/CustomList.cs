@@ -16,7 +16,15 @@ namespace CustomListProject
         {
             get
             {
-                return items[index];
+                if (index < 0 || index >= count)
+                {
+                    throw new System.IndexOutOfRangeException();
+                }
+
+                else
+                {
+                    return items[index];
+                }
             }
             set
             {
@@ -72,7 +80,7 @@ namespace CustomListProject
             }
         }
 
-        public void ResizeArray()
+        public void ResizeArray() //this will be used to create a new array, double its size, and copy the old array into the new one.
         {
             T[] tempItems;
             capacity *= 2;
@@ -82,6 +90,32 @@ namespace CustomListProject
                 tempItems[i] = items[i]; 
             }
             items = tempItems; //left is where we want it to go, right is where it is coming from
+        }
+
+        //--------------------------------------
+        //REMOVE METHOD
+
+        public bool Remove(T item) //
+        {
+            bool isFound = false;
+            for (int i = 0; i < count; i++) //checklist
+            {
+                if (items[i].Equals(item) && !isFound) //determines bool
+                {
+                    //if/else check to make sure that there actually is another index. i.e. if count = 1, do a direct replacement, else, => go to next index logic
+                    // Replacing with next index
+                    // then I want to have that 'i' equal the item in the next index
+                    // I will repeat this process until the end of the array
+                    isFound = true;
+                    count--;
+                }
+
+                if (isFound) //remover
+                {
+                    items[i] = items[i + 1];
+                }
+            }
+            return false;
         }
     }
 }

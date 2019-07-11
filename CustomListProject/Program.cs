@@ -30,6 +30,9 @@ namespace CustomListProject
             test.Add(9);
             Console.WriteLine(test[8]);
             Console.ReadLine();
+            test.Remove(1);
+            Console.WriteLine(test[0]);
+            Console.ReadLine();
         }
     }
 }
