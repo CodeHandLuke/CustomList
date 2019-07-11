@@ -59,7 +59,29 @@ namespace CustomListProject
         //member methods
         public void Add(T item)
         {
-            items[0] = item;
+            if (count == capacity)
+            {
+                ResizeArray();
+                items[count] = item;
+                count++;
+            }
+            else
+            {
+                items[count] = item;
+                count++;
+            }
+        }
+
+        public void ResizeArray()
+        {
+            T[] tempItems;
+            capacity *= 2;
+            tempItems = new T[capacity];
+            for (int i = 0; i < count; i++)
+            {
+                tempItems[i] = items[i]; 
+            }
+            items = tempItems; //left is where we want it to go, right is where it is coming from
         }
     }
 }

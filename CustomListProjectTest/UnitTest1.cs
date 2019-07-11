@@ -77,7 +77,11 @@ namespace CustomListProjectTest
             int value3 = 3;
             int value4 = 4;
             int value5 = 5;
-            int expected = 5;
+            int value6 = 6;
+            int value7 = 6;
+            int value8 = 8;
+            int value9 = 9;
+            int expected = 9;
             int actual;
 
             //act
@@ -86,6 +90,10 @@ namespace CustomListProjectTest
             test.Add(value3);
             test.Add(value4);
             test.Add(value5);
+            test.Add(value6);
+            test.Add(value7);
+            test.Add(value8);
+            test.Add(value9);
             actual = test.Count; //This test is best used when the original capacity of the inner array is less than 5
 
             //assert

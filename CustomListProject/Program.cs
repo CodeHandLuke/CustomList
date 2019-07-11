@@ -10,7 +10,26 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
-            
+            CustomList<int> test = new CustomList<int>(); //*TESTING CODE*
+            test.Add(1);
+            Console.WriteLine(test[0]);
+            test.Add(2);
+            Console.WriteLine(test[1]);
+            test.Add(3);
+            Console.WriteLine(test[2]);
+            test.Add(4);
+            Console.WriteLine(test[3]);
+            test.Add(5);
+            Console.WriteLine(test[4]);
+            test.Add(6);
+            Console.WriteLine(test[5]);
+            test.Add(7);
+            Console.WriteLine(test[6]);
+            test.Add(8);
+            Console.WriteLine(test[7]);
+            test.Add(9);
+            Console.WriteLine(test[8]);
+            Console.ReadLine();
         }
     }
 }
