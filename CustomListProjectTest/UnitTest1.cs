@@ -262,7 +262,7 @@ namespace CustomListProjectTest
 
         [TestMethod]
 
-        public void ToString_OverrideToString_CountRemainsSame()
+        public void ToString_OverrideToString_ReturnAccurateStringLength()
         {
             //arrange
             CustomList<int> test = new CustomList<int>();
@@ -271,41 +271,17 @@ namespace CustomListProjectTest
             int value3 = 3;
             int value4 = 4;
             int expected = 4;
+            string newString;
             int actual;
+            
 
             //act
             test.Add(value1);
             test.Add(value2);
             test.Add(value3);
             test.Add(value4);
-            test.ToString();
-            actual = test.Count;
-
-
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-
-        public void ToString_OverrideToString_CapacityRemainsSame()
-        {
-            //arrange
-            CustomList<int> test = new CustomList<int>();
-            int value1 = 1;
-            int value2 = 2;
-            int value3 = 3;
-            int value4 = 4;
-            int expected = 4;
-            int actual;
-
-            //act
-            test.Add(value1);
-            test.Add(value2);
-            test.Add(value3);
-            test.Add(value4);
-            test.ToString();
-            actual = test.Capacity;
+            newString = test.ToString();
+            actual = newString.Length;
 
 
             //assert
@@ -339,15 +315,27 @@ namespace CustomListProjectTest
 
         [TestMethod]
 
-        public void ToString_OverrideToString_ReturnSameValue()
+        public void ToString_OverrideBoolToString_ReturnBoolStrings()
         {
             //arrange
-
+            CustomList<bool> test = new CustomList<bool>();
+            bool value1 = true;
+            bool value2 = false;
+            bool value3 = true;
+            bool value4 = false;
+            string expected = "TrueFalseTrueFalse";
+            string actual;
 
             //act - make sure a specific index of the old list has the same value as the corresponding index of the newly ToString'd list
+            test.Add(value1);
+            test.Add(value2);
+            test.Add(value3);
+            test.Add(value4);
+            actual = test.ToString();
 
 
             //assert
+            Assert.AreEqual(expected, actual);
         }
 
     }

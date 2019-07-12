@@ -16,7 +16,7 @@ namespace CustomListProject
         {
             get
             {
-                if (index < 0 || index >= count)
+                if (index < 0 || index > count)
                 {
                     throw new System.IndexOutOfRangeException();
                 }
@@ -115,7 +115,7 @@ namespace CustomListProject
                 if (isFound) //remover
                 {
                     RemoveNewTempArray(item);
-                    count--;
+                    //count--;
                     return true;
                 }
             }
@@ -127,11 +127,13 @@ namespace CustomListProject
             T[] tempItems;
             tempItems = new T[capacity];
             int j = 0;
+            bool foundNumber = false;
             for (int i = 0; i < count; i++, j++)
             {
-                if (items[i].Equals(item))
+                if (items[i].Equals(item) && !foundNumber)
                 {
                     j--;
+                    foundNumber = true;
                 }
                 else
                 {
@@ -146,10 +148,16 @@ namespace CustomListProject
 
         //---------------------------------------
         //TO STRING METHOD
-        
+
         public override string ToString()
         {
-
+            string newString = "";
+            //string failedTest = "Failed Test";
+            for (int i = 0; i < count; i++)
+            {
+                newString += items[i].ToString();
+            }
+            return newString;
         }
     }
 }
