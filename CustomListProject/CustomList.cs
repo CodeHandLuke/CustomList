@@ -106,16 +106,42 @@ namespace CustomListProject
                     // Replacing with next index
                     // then I want to have that 'i' equal the item in the next index
                     // I will repeat this process until the end of the array
+                    //**First check to see if the index we are at equals item, if so, then only ++ index i.
+                    //**If it doesn't match the item, then items i = temparray j; then increment both indices
+                    //Be sure to write in logic that accounts for only removing the first instance of item. i.e. if user wanted to remove '2' from the list, make sure only the first 2 is removed, not any other instances of 2.
                     isFound = true;
-                    count--;
                 }
 
                 if (isFound) //remover
                 {
-                    items[i] = items[i + 1];
+                    RemoveNewTempArray(item);
+                    count--;
+                    return true;
                 }
             }
             return false;
+        }
+
+        public void RemoveNewTempArray(T item)
+        {
+            T[] tempItems;
+            tempItems = new T[capacity];
+            int j = 0;
+            for (int i = 0; i < count; i++, j++)
+            {
+                if (items[i].Equals(item))
+                {
+                    j--;
+                }
+                else
+                {
+                    if (!items[i].Equals(null))
+                    {
+                        tempItems[j] = items[i];
+                    }
+                }
+            }
+            items = tempItems;
         }
     }
 }

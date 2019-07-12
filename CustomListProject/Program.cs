@@ -33,6 +33,18 @@ namespace CustomListProject
             test.Remove(1);
             Console.WriteLine(test[0]);
             Console.ReadLine();
+            Console.WriteLine(test[0]);
+            Console.WriteLine(test[1]);
+            Console.WriteLine(test[2]);
+            Console.WriteLine(test[3]);
+            Console.WriteLine(test[4]);
+            Console.WriteLine(test[5]);
+            Console.WriteLine(test[6]);
+            Console.WriteLine(test[7]);
+            Console.WriteLine(test[8]);
+            Console.WriteLine(test[9]);
+            Console.ReadLine();
+
         }
     }
 }
