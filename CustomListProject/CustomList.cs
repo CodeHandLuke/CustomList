@@ -143,5 +143,13 @@ namespace CustomListProject
             }
             items = tempItems;
         }
+
+        //---------------------------------------
+        //TO STRING METHOD
+        
+        public override string ToString()
+        {
+
+        }
     }
 }
