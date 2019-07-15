@@ -339,7 +339,7 @@ namespace CustomListProjectTest
         }
 
         //----------------------------------------------------------------
-        //OVERLOAD OPERATOR +
+        //OVERLOAD OPERATOR + TESTS
 
         [TestMethod]
 
@@ -444,7 +444,7 @@ namespace CustomListProjectTest
         }
 
         //-----------------------------------------
-        //OVERLOAD OPERATOR -
+        //OVERLOAD OPERATOR - TESTS
 
         [TestMethod]
 
@@ -569,6 +569,9 @@ namespace CustomListProjectTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        //----------------------------------------------
+        //ZIPPER METHOD TESTS
 
     }
 }

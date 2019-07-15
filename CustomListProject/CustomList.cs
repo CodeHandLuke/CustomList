@@ -16,7 +16,7 @@ namespace CustomListProject
         {
             get
             {
-                if (index < 0 || index > count)
+                if (index < 0 || index > count - 1)
                 {
                     throw new System.IndexOutOfRangeException();
                 }
@@ -188,18 +188,31 @@ namespace CustomListProject
             //Once that instance is found, print out list 1 with the first instance of the shared value being removed
             CustomList<T> newList = new CustomList<T>();
             CustomList<T> output = new CustomList<T>();
-            bool foundInstance = false;
+            for (int i = 0; i < item2.Count; i++)
+            {
+                newList.Add(item2[i]);
+            }
+
             for (int i = 0; i < item1.Count; i++)
             {
-                for (int j = 0; j < item2.Count; j++)
+                bool foundInstance = false;
+                for (int j = 0; j < newList.Count; j++)
                 {
-                    if (item2[i].Equals(item1[j]) && !foundInstance)
+                    if (item1[i].Equals(newList[j]) && !foundInstance)
                     {
+                        newList.Remove(newList[j]);
                         foundInstance = true;
-                        i++;
+                        j--;
+                    }
+
+                    if (j == newList.Count - 1)
+                    {
+                        if (!foundInstance)
+                        {
+                            output.Add(item1[i]);
+                        }
                     }
                 }
-                output.Add(item1[i]);
             }
             return output;
         }
