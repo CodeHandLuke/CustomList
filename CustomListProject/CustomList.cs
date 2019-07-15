@@ -77,6 +77,7 @@ namespace CustomListProject
             {
                 items[count] = item;
                 count++;
+
             }
         }
 
@@ -127,13 +128,13 @@ namespace CustomListProject
             T[] tempItems;
             tempItems = new T[capacity];
             int j = 0;
-            bool foundNumber = false;
+            bool foundInstance = false;
             for (int i = 0; i < count; i++, j++)
             {
-                if (items[i].Equals(item) && !foundNumber)
+                if (items[i].Equals(item) && !foundInstance)
                 {
                     j--;
-                    foundNumber = true;
+                    foundInstance = true;
                 }
                 else
                 {
@@ -182,7 +183,25 @@ namespace CustomListProject
 
         public static CustomList<T> operator -(CustomList<T> item1, CustomList<T> item2)
         {
-
+            //Create a new list that will hold the result of the two lists being subtracted
+            //Have a for loop that looks to see if list 1 and 2 share an instance
+            //Once that instance is found, print out list 1 with the first instance of the shared value being removed
+            CustomList<T> newList = new CustomList<T>();
+            CustomList<T> output = new CustomList<T>();
+            bool foundInstance = false;
+            for (int i = 0; i < item1.Count; i++)
+            {
+                for (int j = 0; j < item2.Count; j++)
+                {
+                    if (item2[i].Equals(item1[j]) && !foundInstance)
+                    {
+                        foundInstance = true;
+                        i++;
+                    }
+                }
+                output.Add(item1[i]);
+            }
+            return output;
         }
     }
 }
