@@ -573,5 +573,177 @@ namespace CustomListProjectTest
         //----------------------------------------------
         //ZIPPER METHOD TESTS
 
+        [TestMethod]
+
+        public void Zipper_ZipTwoLists_CountIncrementsProperly()
+        {
+            //arrange
+            CustomList<int> odd = new CustomList<int>();
+            CustomList<int> even = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 6;
+            int actual;
+
+            //odd + even possible method to zip
+
+            //act
+            odd.Add(value1);
+            odd.Add(value3);
+            odd.Add(value5);
+            even.Add(value2);
+            even.Add(value4);
+            even.Add(value6);
+            result = odd.Zipper(even);
+            actual = result.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void Zipper_ZipTwoLists_ReturnCorrectIndex()
+        {
+            //arrange
+            CustomList<int> odd = new CustomList<int>();
+            CustomList<int> even = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 3;
+            int actual;
+
+
+            //act
+            odd.Add(value1);
+            odd.Add(value3);
+            odd.Add(value5);
+            even.Add(value2);
+            even.Add(value4);
+            even.Add(value6);
+            result = odd.Zipper(even);
+            actual = result[2];
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void Zipper_ZipTwoLists_ReturnProperString()
+        {
+            //arrange
+            CustomList<int> odd = new CustomList<int>();
+            CustomList<int> even = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            string expected = "123456";
+            string actual;
+
+
+            //act
+            odd.Add(value1);
+            odd.Add(value3);
+            odd.Add(value5);
+            even.Add(value2);
+            even.Add(value4);
+            even.Add(value6);
+            result = odd.Zipper(even);
+            actual = result.ToString();
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void Zipper_ZipTwoLists_IndexIncreasesProperly()
+        {
+            //arrange
+            CustomList<int> odd = new CustomList<int>();
+            CustomList<int> even = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 8;
+            int actual;
+
+
+            //act
+            odd.Add(value1);
+            odd.Add(value3);
+            odd.Add(value5);
+            even.Add(value2);
+            even.Add(value4);
+            even.Add(value6);
+            result = odd.Zipper(even);
+            actual = result.Capacity;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void Zipper_ZipTwoListsOfDifferentLengths_ReturnListWithExtraNumbersAtEnd()
+        {
+            //arrange
+            CustomList<int> odd = new CustomList<int>();
+            CustomList<int> even = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            int value7 = 7;
+            int value9 = 9;
+            int value11 = 11;
+            int value13 = 13;
+            string expected = "123456791113";
+            string actual;
+
+
+            //act
+            odd.Add(value1);
+            odd.Add(value3);
+            odd.Add(value5);
+            odd.Add(value7);
+            odd.Add(value9);
+            odd.Add(value11);
+            odd.Add(value13);
+            even.Add(value2);
+            even.Add(value4);
+            even.Add(value6);
+            result = odd.Zipper(even);
+            actual = result.ToString();
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

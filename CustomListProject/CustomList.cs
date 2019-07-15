@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         //member variables
         private int count; //make a get for the count
@@ -212,6 +212,38 @@ namespace CustomListProject
                             output.Add(item1[i]);
                         }
                     }
+                }
+            }
+            return output;
+        }
+
+        //---------------------------------------------------
+        //ZIPPER METHOD
+
+        public CustomList<T> Zipper(CustomList<T> item1) //maybe create a method with only one parameter to pass in
+        {
+            int maxLength;
+            if (count > item1.Count)
+            {
+                maxLength = count;
+            }
+
+            else
+            {
+                maxLength = item1.Count;
+            }
+
+            CustomList<T> output = new CustomList<T>();
+            for (int i = 0; i < maxLength; i++)
+            {
+                if (i < count)
+                {
+                    output.Add(items[i]);
+                }
+
+                if (i < item1.Count)
+                {
+                    output.Add(item1[i]);
                 }
             }
             return output;
