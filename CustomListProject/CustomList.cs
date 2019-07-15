@@ -115,7 +115,7 @@ namespace CustomListProject
                 if (isFound) //remover
                 {
                     RemoveNewTempArray(item);
-                    //count--;
+                    count--;
                     return true;
                 }
             }
@@ -152,12 +152,29 @@ namespace CustomListProject
         public override string ToString()
         {
             string newString = "";
-            //string failedTest = "Failed Test";
             for (int i = 0; i < count; i++)
             {
                 newString += items[i].ToString();
             }
             return newString;
+        }
+
+        //-----------------------------------
+        //OVERLOAD + OPERATOR
+
+        public static CustomList<T> operator +(CustomList<T> item1, CustomList<T> item2)
+        {
+            CustomList<T> newList = new CustomList<T>();
+            for (int i = 0; i < item1.count; i++)
+            {
+                newList.Add(item1[i]);
+            }
+            for (int i = 0; i < item2.count; i++)
+            {
+                newList.Add(item2[i]);
+            }
+            return newList;
+            //
         }
     }
 }

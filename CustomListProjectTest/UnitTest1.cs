@@ -338,5 +338,110 @@ namespace CustomListProjectTest
             Assert.AreEqual(expected, actual);
         }
 
+        //----------------------------------------------------------------
+        //OVERLOAD OPERATOR
+
+        [TestMethod]
+
+        public void OverloadPlus_AddTwoLists_ReturnSingleList()
+        {
+            //arrange
+            CustomList<int> one = new CustomList<int>();
+            CustomList<int> two = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            string expected;
+            string actual;
+
+            //act
+            one.Add(value1);
+            one.Add(value3);
+            one.Add(value5);
+            two.Add(value2);
+            two.Add(value4);
+            two.Add(value6);
+            result.Add(value1);
+            result.Add(value3);
+            result.Add(value5);
+            result.Add(value2);
+            result.Add(value4);
+            result.Add(value6);
+            CustomList<int> actualList = one + two;
+            expected = result.ToString();
+            actual = actualList.ToString();
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+
+        public void OverloadPlus_AddTwoLists_AccurateCount()
+        {
+            //arrange
+            CustomList<int> one = new CustomList<int>();
+            CustomList<int> two = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 6;
+            int actual;
+
+            //act
+            one.Add(value1);
+            one.Add(value3);
+            one.Add(value5);
+            two.Add(value2);
+            two.Add(value4);
+            two.Add(value6);
+            CustomList<int> actualList = one + two;
+            actual = actualList.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void OverloadPlus_AddTwoLists_ReturnCorrectIndex()
+        {
+            //arrange
+            CustomList<int> one = new CustomList<int>();
+            CustomList<int> two = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 2;
+            int actual;
+
+            //act
+            one.Add(value1);
+            one.Add(value3);
+            one.Add(value5);
+            two.Add(value2);
+            two.Add(value4);
+            two.Add(value6);
+            CustomList<int> actualList = one + two;
+            actual = actualList[3];
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
