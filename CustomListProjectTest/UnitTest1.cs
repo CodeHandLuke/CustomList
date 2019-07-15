@@ -339,7 +339,7 @@ namespace CustomListProjectTest
         }
 
         //----------------------------------------------------------------
-        //OVERLOAD OPERATOR
+        //OVERLOAD OPERATOR +
 
         [TestMethod]
 
@@ -438,6 +438,133 @@ namespace CustomListProjectTest
             CustomList<int> actualList = one + two;
             actual = actualList[3];
 
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        //-----------------------------------------
+        //OVERLOAD OPERATOR -
+
+        [TestMethod]
+
+        public void OverloadMinus_SubtractTwoLists_CountDecrementsProperly()
+        {
+            //arrange
+            CustomList<int> one = new CustomList<int>();
+            CustomList<int> two = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 2;
+            int actual;
+
+
+            //act
+            one.Add(value1);
+            one.Add(value3);
+            one.Add(value5);
+            two.Add(value2);
+            two.Add(value1);
+            two.Add(value6);
+            CustomList<int> actualList = one - two;
+            actual = actualList.Count;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void OverloadMinus_SubtractTwoList_OnlyOneInstanceRemoved() //create an index copy
+        {
+            //arrange
+            CustomList<int> one = new CustomList<int>();
+            CustomList<int> two = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 4;
+            int actual;
+
+
+            //act
+            one.Add(value1);
+            one.Add(value3);
+            one.Add(value5);
+            one.Add(value1);
+            one.Add(value1);
+            two.Add(value2);
+            two.Add(value1);
+            two.Add(value6);
+            CustomList<int> actualList = one - two;
+            actual = actualList.Count;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void OverloadMinus_SubtractTwoLists_ReturnCorrectIndex()
+        {
+            //arrange
+            CustomList<int> one = new CustomList<int>();
+            CustomList<int> two = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 3;
+            int actual;
+
+
+            //act
+            one.Add(value1);
+            one.Add(value3);
+            one.Add(value5);
+            two.Add(value2);
+            two.Add(value1);
+            two.Add(value6);
+            CustomList<int> actualList = one - two;
+            actual = actualList[0];
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+
+        public void OverloadMinus_SubtractTwoList_DuplicateInstanesIndexedProperly()
+        {
+            //arrange
+            CustomList<int> one = new CustomList<int>();
+            CustomList<int> two = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value5 = 5;
+            int value6 = 6;
+            int expected = 1;
+            int actual;
+
+
+            //act
+            one.Add(value1);
+            one.Add(value3);
+            one.Add(value5);
+            one.Add(value1);
+            one.Add(value1);
+            two.Add(value2);
+            two.Add(value1);
+            two.Add(value6);
+            CustomList<int> actualList = one - two;
+            actual = actualList[2];
 
             //assert
             Assert.AreEqual(expected, actual);

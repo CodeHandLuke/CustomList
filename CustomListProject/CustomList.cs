@@ -176,5 +176,13 @@ namespace CustomListProject
             return newList;
             //
         }
+
+        //-----------------------------------
+        //OVERLOAD - OPERATOR
+
+        public static CustomList<T> operator -(CustomList<T> item1, CustomList<T> item2)
+        {
+
+        }
     }
 }
