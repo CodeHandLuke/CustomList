@@ -37,7 +37,7 @@ namespace CustomListProjectTest
 
             //act
             test.Add(value1);
-            actual = test.Count; //?Create a custom property that accounts for how many items are in my custom list
+            actual = test.Count; 
 
 
             //assert
@@ -154,7 +154,7 @@ namespace CustomListProjectTest
 
         [TestMethod]
 
-        public void Remove_RemoveValidItem_ReturnTrueItemExists() //also write a false version!!!
+        public void Remove_RemoveValidItem_ReturnTrueItemExists() 
         {
             //arrange
             CustomList<int> test = new CustomList<int>();
@@ -208,7 +208,7 @@ namespace CustomListProjectTest
 
         [TestMethod]
 
-        public void Remove_RemoveItem_ReturnFalseItemNonexistent() //make sure the
+        public void Remove_RemoveItem_ReturnFalseItemNonexistent() 
         {
             //arrange
             CustomList<int> test = new CustomList<int>();
@@ -590,7 +590,7 @@ namespace CustomListProjectTest
             int expected = 6;
             int actual;
 
-            //odd + even possible method to zip
+            
 
             //act
             odd.Add(value1);

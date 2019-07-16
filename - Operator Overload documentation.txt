@@ -1,0 +1,55 @@
+The - operator overload is used to subtract an instance of custom list from a different instance of custom list.
+
+
+Parameters:
+The two parameters passed into the operator overload are CustomList<T> item1 and CustomList<T> item2. It is generic (T), therefore, allowing various data types to be used.
+
+
+Returns:
+This specific overload returns a new "output" CustomList<T> that is the result of List 2 being subtracted from List 1.
+
+
+Syntax:
+This particular method requires a nested "for" loop that first goes through list 1 sequentially by index, and then comparing each individual index and seeing if it matches an index in list 2. If a match is found in list 2, the instance in list 2 is removed from the list and then the boolean of "foundInstance" is set to true. Afterwards, the following "if" statement will make sure that the an index in list 1 is compared to every index in list 2, and if no match was found in list 2, that corresponding index in list 1 is printed in a new output list that will be returned after the method is complete.
+
+	EXAMPLE: item1 = {1,3,5} /// item2 = {2,1,6};
+        public static CustomList<T> operator -(CustomList<T> item1, CustomList<T> item2)
+        {
+            //Create a new list that will hold the result of the two lists being subtracted
+            //Have a for loop that looks to see if list 1 and 2 share an instance
+            //Once that instance is found, print out list 1 with the first instance of the shared value being removed
+            CustomList<T> newList = new CustomList<T>();
+            CustomList<T> output = new CustomList<T>();
+            //First create a new list that is a copy of "item2", the second list. This is done as good practice so we are not manipulating the list passed in as item2
+            for (int i = 0; i < item2.Count; i++)
+            {
+                newList.Add(item2[i]);
+            }
+
+            for (int i = 0; i < item1.Count; i++)
+            {
+                bool foundInstance = false;
+                for (int j = 0; j < newList.Count; j++)
+                {
+                    //If a value in item1 is found in newList (item2), the boolean foundInstance will return true and that corresponding instance is removed from newList, ensuring it won't 			be compared to any other instances in item1.
+                    if (item1[i].Equals(newList[j]) && !foundInstance)
+                    {
+                        newList.Remove(newList[j]);
+                        foundInstance = true;
+                        j--;
+                        //It is important to decrement 'j' to ensure that the method doesn't throw an out of range exception. Whenever a value is removed from a list, the index is 					decremented by one so we have to check the placeholder of the value that was removed
+                    }
+
+                    if (j == newList.Count - 1)
+                    {
+                        if (!foundInstance)
+                        {
+                            output.Add(item1[i]);
+                            //If a match for a value in item1 was not found in newList, it is added to the output list.
+				i.e. Since '1' was found in newList, it is not added to the output list and the value 1 is removed from the [1] index of newList. Then, the for loop 				increments and starts again, checking to see if the '3' has a match or not in newList, continuing this process until item1's for loop is finished.
+                        }
+                    }
+                }
+            }
+            return output;
+        }

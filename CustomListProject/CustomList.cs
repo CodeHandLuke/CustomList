@@ -188,6 +188,7 @@ namespace CustomListProject
             //Once that instance is found, print out list 1 with the first instance of the shared value being removed
             CustomList<T> newList = new CustomList<T>();
             CustomList<T> output = new CustomList<T>();
+            //First create a new list that is a copy of "item2", the second list.
             for (int i = 0; i < item2.Count; i++)
             {
                 newList.Add(item2[i]);
@@ -198,11 +199,13 @@ namespace CustomListProject
                 bool foundInstance = false;
                 for (int j = 0; j < newList.Count; j++)
                 {
+                    //If a value in item1 is found in item2, the boolean foundInstance will return true and that corresponding instance is removed from item2 ensuring it won't be compared to any other instances in item1.
                     if (item1[i].Equals(newList[j]) && !foundInstance)
                     {
                         newList.Remove(newList[j]);
                         foundInstance = true;
                         j--;
+                        //It is important to decrement 'j' to ensure that the method doesn't throw an out of range exception. Whenever a value is removed from a list, the index is decremented by one so we have to check the placeholder of the value that was removed
                     }
 
                     if (j == newList.Count - 1)
@@ -210,6 +213,7 @@ namespace CustomListProject
                         if (!foundInstance)
                         {
                             output.Add(item1[i]);
+                            //If a match for a value in item1 was not found in item2, it is added to the output list.
                         }
                     }
                 }
