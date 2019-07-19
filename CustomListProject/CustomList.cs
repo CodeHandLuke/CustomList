@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace CustomListProject
             {
                 if (index < 0 || index > count - 1)
                 {
-                    throw new System.IndexOutOfRangeException();
+					throw new ArgumentOutOfRangeException();
                 }
 
                 else
@@ -252,5 +253,13 @@ namespace CustomListProject
             }
             return output;
         }
-    }
+
+		public IEnumerator GetEnumerator()
+		{
+			for (int i = 0; i < items.Length; i++)
+			{
+				yield return items[i];
+			}
+		}
+	}
 }
